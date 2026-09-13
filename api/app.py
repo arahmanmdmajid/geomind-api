@@ -41,7 +41,6 @@ from geomind import ai, analysis, data, draw, suggest  # noqa: E402  (after .env
 ALLOWED_ORIGINS = os.environ.get(
     "ALLOWED_ORIGINS",
     "https://geomind-ai-geomind-ai.static.hf.space,"
-    "https://geomind-ai-geomind-ai-staging.static.hf.space,"
     "http://127.0.0.1:8770,http://localhost:8770",
 ).split(",")
 

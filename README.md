@@ -8,7 +8,7 @@
 
 GeoMind AI turns questions like these into real spatial analysis. An AI model reads the question and picks the right analysis; Python and GeoPandas compute the answer from open map data; the map shows buffers, coverage gaps and the most underserved schools.
 
-- **Live app:** https://geomind-ai-geomind-ai-staging.static.hf.space
+- **Live app:** https://geomind-ai-geomind-ai.static.hf.space
 - **API docs:** https://geomind-api-fli0.onrender.com/docs
 
 > The API runs on a free hosting tier that sleeps when idle — the first request after a quiet period can take up to a minute while it wakes up.
@@ -116,7 +116,7 @@ The suite checks the analyses against measured values (for example Gulberg: 79 s
 ## Deployment
 
 - **API → Render (free):** New → Blueprint → select this repo (`render.yaml`), then add `GROQ_API_KEY` in the service's Environment settings.
-- **Web page → Hugging Face Static Space (free):** `scripts/deploy_web.ps1` (defaults to the staging Space).
+- **Web page → Hugging Face Static Space (free):** `scripts/deploy_web.ps1` publishes `web/index.html` to the live Space.
 
 ## Limitations
 

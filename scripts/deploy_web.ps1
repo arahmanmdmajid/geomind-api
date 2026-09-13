@@ -1,8 +1,7 @@
-# Deploy the web page to a Hugging Face Static Space (free).
-# Default target is the STAGING Space; pass -Space GeoMind-AI/geomind-ai to update the live site.
+# Deploy the web page to the live Hugging Face Static Space (free).
 # Requires: pip install huggingface_hub, then `hf auth login` with your own token.
 param(
-    [string]$Space = "GeoMind-AI/geomind-ai-staging",
+    [string]$Space = "GeoMind-AI/geomind-ai",
     [string]$Message = "Deploy web page"
 )
 $root = Split-Path $PSScriptRoot -Parent
