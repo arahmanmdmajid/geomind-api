@@ -1,6 +1,6 @@
-# GeoMind AI
+﻿# GeoMind AI
 
-**Ask in plain English how close schools are to healthcare — anywhere with open map data — and get an answer computed with GIS and drawn on a map.**
+**Ask in plain English how close schools are to healthcare â€” anywhere with open map data â€” and get an answer computed with GIS and drawn on a map.**
 
 > "Which schools are more than 2 km from a medical facility?"
 > "Which areas have poor access to healthcare?"
@@ -9,9 +9,9 @@
 GeoMind AI turns questions like these into real spatial analysis. An AI model reads the question and picks the right analysis; Python and GeoPandas compute the answer from open map data; the map shows buffers, coverage gaps and the most underserved schools.
 
 - **Live app:** https://geomind-ai-geomind-ai-staging.static.hf.space
-- **API docs:** https://geomind-api.onrender.com/docs
+- **API docs:** https://geomind-api-fli0.onrender.com/docs
 
-> The API runs on a free hosting tier that sleeps when idle — the first request after a quiet period can take up to a minute while it wakes up.
+> The API runs on a free hosting tier that sleeps when idle â€” the first request after a quiet period can take up to a minute while it wakes up.
 
 ---
 
@@ -21,7 +21,7 @@ Where a new clinic, school nurse programme or ambulance post should go depends o
 
 ## What it does
 
-| You can… | Example |
+| You canâ€¦ | Example |
 |---|---|
 | Pick a featured district or search any place | Ghirnatah (Riyadh), Gulberg (Lahore), Clifton (Karachi), or any searched area |
 | Count and list schools, medical facilities or hospitals | "How many hospitals are in Gulberg, Lahore?" |
@@ -48,7 +48,7 @@ flowchart LR
 ```
 
 1. **Route.** The AI converts the question into one of five analysis blocks, as JSON.
-2. **Compute.** Python runs that analysis with GeoPandas — distances in metres, buffers, spatial joins, polygon overlays.
+2. **Compute.** Python runs that analysis with GeoPandas â€” distances in metres, buffers, spatial joins, polygon overlays.
 3. **Explain.** The AI turns the computed facts into one to three sentences. It is only given those facts, so it cannot invent numbers, names or data sources.
 
 If the AI is unavailable (no key, network issue or free-tier rate limit), a keyword router and the computed text take over, so the app still answers. See [docs/ai-design.md](docs/ai-design.md) and [docs/architecture.md](docs/architecture.md).
@@ -58,10 +58,10 @@ If the AI is unavailable (no key, network issue or free-tier rate limit), a keyw
 | Block | What it computes | GIS operations |
 |---|---|---|
 | `find` | List or count places, optionally within/beyond a distance from facilities, schools, a pin, the user or the centre | `sjoin_nearest`, point distances |
-| `coverage` | Parts of the area farther than a distance from healthcare, and the schools inside them | `buffer` → `union_all` → `difference` |
+| `coverage` | Parts of the area farther than a distance from healthcare, and the schools inside them | `buffer` â†’ `union_all` â†’ `difference` |
 | `distance_grid` | A grid of squares coloured by distance to the nearest school or facility | grid build, `within`, `sjoin_nearest`, quantile classes |
 | `summary` | Area size, counts, densities, average and farthest school-to-facility distance | `area`, `sjoin_nearest` |
-| `unsupported` | Polite refusal for off-topic questions | — |
+| `unsupported` | Polite refusal for off-topic questions | â€” |
 
 ## Repository layout
 
@@ -74,7 +74,7 @@ api/
   geomind/draw.py      turns results into map layers
   geomind/suggest.py   suggested questions from each area's data
   requirements.txt
-web/index.html         the web app (map, search, chat) — display only
+web/index.html         the web app (map, search, chat) â€” display only
 data/featured.json     prebuilt Overture Maps extracts for the featured districts
 scripts/               make_featured.py (rebuild data), deploy_web.ps1
 tests/                 pytest suite
@@ -103,7 +103,7 @@ cd api && python app.py                                      # API on http://127
 python -m http.server 8770 --bind 127.0.0.1 --directory web  # page on http://127.0.0.1:8770
 ```
 
-Open http://127.0.0.1:8770 — the page detects it is running locally and talks to the local API.
+Open http://127.0.0.1:8770 â€” the page detects it is running locally and talks to the local API.
 
 ### Tests
 
@@ -115,8 +115,8 @@ The suite checks the analyses against measured values (for example Gulberg: 79 s
 
 ## Deployment
 
-- **API → Render (free):** New → Blueprint → select this repo (`render.yaml`), then add `GROQ_API_KEY` in the service's Environment settings.
-- **Web page → Hugging Face Static Space (free):** `scripts/deploy_web.ps1` (defaults to the staging Space).
+- **API â†’ Render (free):** New â†’ Blueprint â†’ select this repo (`render.yaml`), then add `GROQ_API_KEY` in the service's Environment settings.
+- **Web page â†’ Hugging Face Static Space (free):** `scripts/deploy_web.ps1` (defaults to the staging Space).
 
 ## Limitations
 
@@ -127,15 +127,15 @@ The suite checks the analyses against measured values (for example Gulberg: 79 s
 
 ## Data sources and attribution
 
-- Map data © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright), available under the Open Database License (ODbL), via the Overpass API and Nominatim.
+- Map data Â© [OpenStreetMap contributors](https://www.openstreetmap.org/copyright), available under the Open Database License (ODbL), via the Overpass API and Nominatim.
 - Places data from [Overture Maps Foundation](https://overturemaps.org) (featured districts).
 - Basemaps: Esri World Light Gray / Dark Gray Canvas.
-- Search suggestions: [Photon](https://photon.komoot.io) by komoot. Geocoding by [Nominatim](https://nominatim.org) — used within its usage policy (identifying User-Agent, low request rate).
+- Search suggestions: [Photon](https://photon.komoot.io) by komoot. Geocoding by [Nominatim](https://nominatim.org) â€” used within its usage policy (identifying User-Agent, low request rate).
 - Language model: [Groq](https://groq.com), `openai/gpt-oss-120b`.
 
 ## Team
 
-GeoMind AI team — add member names here.
+GeoMind AI team â€” add member names here.
 
 ## License
 
