@@ -1,0 +1,18 @@
+# Render blueprint for the GeoMind AI Python API (free web service).
+# In Render: New > Blueprint > pick this repo. Then set GROQ_API_KEY in the service's Environment.
+services:
+  - type: web
+    name: geomind-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r api/requirements.txt
+    startCommand: cd api && uvicorn app:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.4
+      - key: GROQ_API_KEY
+        sync: false            # secret: entered in the Render dashboard, never committed
+      - key: ALLOWED_ORIGINS
+        value: https://geomind-ai-geomind-ai.static.hf.space,https://geomind-ai-geomind-ai-staging.static.hf.space
