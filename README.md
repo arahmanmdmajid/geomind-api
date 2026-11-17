@@ -137,6 +137,8 @@ The suite checks the analyses against measured values (for example Gulberg: 79 s
 
 GeoMind AI team — add member names here.
 
+- [Sumbal Fatima](https://github.com/Sumbal-Fatima)
+
 ## License
 
 Code: [MIT](LICENSE). Map data keeps its own licenses, listed above.
